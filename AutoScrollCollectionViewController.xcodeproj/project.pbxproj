@@ -11,6 +11,7 @@
 		1F8A1C131DFF8E520052A9A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A1C121DFF8E520052A9A6 /* ViewController.swift */; };
 		1F8A1C161DFF8E520052A9A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A1C141DFF8E520052A9A6 /* Main.storyboard */; };
 		1F8A1C181DFF8E520052A9A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A1C171DFF8E520052A9A6 /* Assets.xcassets */; };
+		1F8A1C201DFF995D0052A9A6 /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A1C1F1DFF995D0052A9A6 /* Async.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		1F8A1C151DFF8E520052A9A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F8A1C171DFF8E520052A9A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8A1C191DFF8E520052A9A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F8A1C1F1DFF995D0052A9A6 /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/tvOS/Async.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8A1C201DFF995D0052A9A6 /* Async.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +60,7 @@
 				1F8A1C141DFF8E520052A9A6 /* Main.storyboard */,
 				1F8A1C171DFF8E520052A9A6 /* Assets.xcassets */,
 				1F8A1C191DFF8E520052A9A6 /* Info.plist */,
+				1F8A1C1F1DFF995D0052A9A6 /* Async.framework */,
 			);
 			path = AutoScrollCollectionViewController;
 			sourceTree = "<group>";
@@ -71,6 +75,7 @@
 				1F8A1C091DFF8E520052A9A6 /* Sources */,
 				1F8A1C0A1DFF8E520052A9A6 /* Frameworks */,
 				1F8A1C0B1DFF8E520052A9A6 /* Resources */,
+				1F8A1C211DFF99A00052A9A6 /* carthage copy-frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +131,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F8A1C211DFF99A00052A9A6 /* carthage copy-frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Async.framework",
+			);
+			name = "carthage copy-frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F8A1C091DFF8E520052A9A6 /* Sources */ = {
@@ -247,6 +270,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = AutoScrollCollectionViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.AutoScrollCollectionViewController;
@@ -260,6 +287,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = AutoScrollCollectionViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.AutoScrollCollectionViewController;
