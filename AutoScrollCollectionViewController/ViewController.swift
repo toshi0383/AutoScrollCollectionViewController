@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     private var focusUpdateTask: Async?
+    private var fixContentOffsetTask: Async?
     private var _currentIndex: Int = 0
     private func updateCurrentIndex(_ index: Int) {
         _currentIndex = index
@@ -63,7 +64,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        _currentIndex = context.nextFocusedIndexPath?.row ?? 0
+        guard let indexPath = context.nextFocusedIndexPath else {
+            return
+        }
+        _currentIndex = indexPath.row
+        fixContentOffsetTask?.cancel()
+        fixContentOffsetTask = Async.main(after: 0.1) {
+            self.updateCurrentIndex(self._currentIndex)
+        }
     }
 }
 
