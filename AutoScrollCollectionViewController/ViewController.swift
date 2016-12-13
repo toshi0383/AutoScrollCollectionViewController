@@ -87,12 +87,16 @@ class Cell: UICollectionViewCell {
         if (context.nextFocusedItem as! Cell) == self {
             coordinator.addCoordinatedAnimations({
                 self.imageview.image = UIImage(named: "dev-insights")
-                self.imageview.addBorder()
+                if !self.imageview.adjustsImageWhenAncestorFocused {
+                    self.imageview.addBorder()
+                }
             }, completion: nil)
         } else if (context.previouslyFocusedItem as! Cell) == self {
             coordinator.addCoordinatedAnimations({
                 self.imageview.image = UIImage(named: "safari")
-                self.imageview.removeBorder()
+                if !self.imageview.adjustsImageWhenAncestorFocused {
+                    self.imageview.removeBorder()
+                }
             }, completion: nil)
 
         }
