@@ -10,6 +10,7 @@ import Async
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    let items: [Int] = (0..<10).map{$0}
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -54,9 +55,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     // MARK: Delegate & DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if 0 == indexPath.row || indexPath.row == items.count - 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Empty", for: indexPath)
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         return cell
     }
