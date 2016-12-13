@@ -1,4 +1,5 @@
 ### https://raw.github.com/github/gitignore/58d953f03f9b9eb2ec160fe320f9041141dc8b31/swift.gitignore
+.DS_Store
 
 # Xcode
 #
